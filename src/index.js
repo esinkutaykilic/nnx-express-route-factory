@@ -34,7 +34,7 @@ import express from 'express';
 
 
 /**
- * express router end-point config data.
+ * Router end-point config data.
  * @typedef     {Object} EndPointConfig
  * @property    {nnxExpressRouterFactory.METHOD} method
  * @property    {String} path
@@ -42,15 +42,15 @@ import express from 'express';
  */
 
 /**
- * generate express route object
- * @param {EndPointConfig[]} routeConfig
+ * Generates express route object.
+ * @param {EndPointConfig[]} routerConfig
  * @return {express.Router}
  */
-function nnxExpressRouterFactory(routeConfig) {
+function nnxExpressRouterFactory(routerConfig) {
     // eslint-disable-next-line new-cap
     const router = express.Router();
 
-    for (const endPointConfig of routeConfig) {
+    for (const endPointConfig of routerConfig) {
         // eslint-disable-next-line max-len
         const handler = Array.isArray(endPointConfig.handler) ? endPointConfig.handler : [endPointConfig.handler];
         router[endPointConfig.method](endPointConfig.path, ...handler);
